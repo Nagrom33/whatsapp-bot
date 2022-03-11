@@ -7,30 +7,30 @@ const Strings = require("../lib/db");
 const WEATHER = Strings.weather;
 
 module.exports = {
-    name: "weather",
-    description: WEATHER.DESCRIPTION,
-    extendedDescription: WEATHER.EXTENDED_DESCRIPTION,
+    name: "hetweer",
+    description: 'Het weer bericht',
+    extendedDescription: 'Het weer bericht',
     demo: {
         isEnabled: true,
         text: [
-            ".weather New Delhi",
-            ".weather New Delhi tomorrow",
-            ".weather New Delhi tom",
+            ".hetweer Nijkerk",
+            ".weather Nijkerk tomorrow",
+            ".weather Nijkerk tom",
         ],
     },
     async handle(client, chat, BotsApp, args) {
         try {
             const weatherTypes = {
-                sunny: "sunny",
-                clear: "clear",
-                cloud: "cloud",
-                overcast: "overcast",
-                rain: "rain",
-                drizzle: "drizzle",
-                snow: "snow",
+                sunny: "zonnig",
+                clear: "helder",
+                cloud: "wolk",
+                overcast: "bewolkt",
+                rain: "regen",
+                drizzle: "motregen",
+                snow: "sneeuw",
                 storm: "storm",
-                fog: "fog",
-                haze: "haze",
+                fog: "misy",
+                haze: "nevel",
                 mist: "mist",
             };
             async function result(imageUrl, weatherDataVariables, downloading) {

@@ -1,19 +1,19 @@
 const { MessageType } = require("@adiwajshing/baileys");
-const Strings = require("../lib/db");
-const format = require("python-format-js");
+// const Strings = require("../lib/db");
+// const format = require("python-format-js");
 const inputSanitization = require("../sidekick/input-sanitization");
-const alive = Strings.alive;
+// const alive = Strings.alive;
 
 module.exports = {
-    name: "alive",
-    description: alive.DESCRIPTION,
-    extendedDescription: alive.EXTENDED_DESCRIPTION,
-    demo: { isEnabled: true, text: ".alive" },
+    name: ".test",
+    description: 'Testen of botje nog zijn werk doet.',
+    extendedDescription: 'Testen of de bot nog aan staat.',
+    demo: { isEnabled: true, text: ".test" },
     async handle(client, chat, BotsApp, args) {
         try {
             client.sendMessage(
                 BotsApp.chatId,
-                alive.ALIVE_MSG,
+                'Jaja, de bot staat aan.. Geen paniek!',
                 MessageType.text
             ).catch(err => inputSanitization.handleError(err, client, BotsApp));
         } catch (err) {

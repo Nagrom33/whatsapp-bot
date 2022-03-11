@@ -79,11 +79,11 @@ async function main() {
         await sequelize.sync();
         console.log(chalk.greenBright.bold("[INFO] All models were synchronized successfully."));
         console.log(chalk.greenBright.bold("[INFO] Connected! Welcome to BotsApp"));
-        client.sendMessage(
-            client.user.jid,
-            '🤖 Je bot draait volle toeren! 🤖',
-            MessageType.text
-        );
+        // client.sendMessage(
+        //     client.user.jid,
+        //     '🤖 Je bot draait volle toeren! 🤖',
+        //     MessageType.text
+        // );
     })
 
 
@@ -146,7 +146,7 @@ async function main() {
             // args.forEach(arg => console.log("arg -> " + arg  + "  type -> " + typeof(arg)));
             // console.log("-------------------------------------------")
             if (!command) {
-                client.sendMessage(BotsApp.chatId, "```Woops, invalid command! Use```  *.help*  ```to display the command list.```", MessageType.text);
+                client.sendMessage(BotsApp.chatId, "```Fout!```", MessageType.text);
                 return;
             } else if (command && BotsApp.commandName == "help") {
                 try {
