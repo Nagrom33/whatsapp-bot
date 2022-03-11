@@ -81,9 +81,7 @@ async function main() {
         console.log(chalk.greenBright.bold("[INFO] Connected! Welcome to BotsApp"));
         client.sendMessage(
             client.user.jid,
-            GENERAL.SUCCESSFUL_CONNECTION.format({
-                worktype: config.WORK_TYPE,
-            }),
+            '🤖 Je bot draait volle toeren! 🤖',
             MessageType.text
         );
     })
