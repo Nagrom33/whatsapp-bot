@@ -21,6 +21,7 @@
         "google-tts-api": "^2.0.2",
         "got": "^11.8.2",
         "jsdom": "^17.0.0",
+        "moment": "^2.29.1",
         "ocr-space-api-wrapper": "^1.0.6",
         "pg": "^8.7.1",
         "pornsearch": "^2.4.3",

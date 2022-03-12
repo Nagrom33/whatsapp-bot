@@ -24,7 +24,13 @@ module.exports = {
                     MessageType.image,
                     {
                         mimetype: Mimetype.jpg,
-                        caption: `*Title:* ${caption.titel}\n*Views:* ${caption.views}\n*Rate:* ${caption.rate}\n*Lengte min:* ${caption.length_min}\n*Video:* ${caption.video}`,
+                        caption: `
+*Title:* ${caption.titel}
+*Views:* ${caption.views}
+*Rate:* ${caption.rate}
+*Lengte min:* ${caption.length_min}
+*Video:* ${caption.video}
+                        `,
                         thumbnail: null,
                     }
                 ).catch(err => inputSanitization.handleError(err, client, BotsApp));
