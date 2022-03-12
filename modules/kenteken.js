@@ -86,11 +86,11 @@ module.exports = {
                         remoteJid: BotsApp.chatId,
                         fromMe: true,
                     });
-                    inputSanitization.handleError(
-                        error,
-                        client,
-                        BotsApp,
-                        'Error 1?!'
+                    console.log(error);
+                    client.sendMessage(
+                        BotsApp.chatId,
+                        '❌ Er is iets mis gegaan, probeer het opnieuw',
+                        MessageType.text
                     );
                     return;
                 });

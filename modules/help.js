@@ -5,53 +5,73 @@ const inputSanitization = require("../sidekick/input-sanitization");
 const config = require("../config");
 const HELP = Strings.help;
 
+const CommandsEnabled = [
+    {
+        command: 'carbon',
+        description: 'Eenvoudig code voorbeeld als jpg.',
+        example: '.carbon <?php echo "Hello World"; ?>'
+    },
+    {
+        command: 'hetweer',
+        description: 'Het weer bericht, voor vandaag of morgen.',
+        example: '.hetweer Nijkerk tomorrow'
+    },
+    {
+        command: 'imdb',
+        description: 'Krijg informatie over een film of serie van IMDB.',
+        example: '.imdb flodder'
+    },
+    {
+        command: 'kenteken',
+        description: 'Meer willen weten over een kenteken, dat kan hier.',
+        example: '.kenteken 80-sr-rl'
+    },
+    {
+        command: 'pornhub',
+        description: 'Wanneer je het nodig hebt een random filmpje van een bepaalde genre.',
+        example: '.pornhub ass'
+    },
+    {
+        command: 'teammaker',
+        description: 'Random groepen indelen, .teammaker <deelnemer 1> <deelnemer 2> | <aantal teams>',
+        example: '.teammaker Jan Jaap Joost Geurt | 2'
+    },
+    {
+        command: 'wp',
+        description: 'Warzone statistieken van een gebruiker',
+        example: '.wp gurdt#3199278'
+    },
+    {
+        command: 'wistjedat',
+        description: 'Leuke of niet zo leuke weetjes.',
+        example: '.wistjedat'
+    },
+];
+
 module.exports = {
     name: "help",
     description: HELP.DESCRIPTION,
     extendedDescription: HELP.EXTENDED_DESCRIPTION,
     demo: {isEnabled: false},
-    async handle(client, chat, BotsApp, args, commandHandler) {
+    async handle(client, chat, BotsApp, args) {
         try {
             var prefixRegex = new RegExp(config.PREFIX, "g");
             var prefixes = /\/\^\[(.*)+\]\/\g/g.exec(prefixRegex)[1];
             if(!args[0]){
                 var helpMessage = HELP.HEAD;
-                commandHandler.forEach(element => {
-                    helpMessage += HELP.TEMPLATE.format(prefixes[0] + element.name, element.description);
+                CommandsEnabled.forEach(element => {
+                    helpMessage += HELP.TEMPLATE.format(prefixes[0] + element.command, element.description, element.example);
                 });
                 client.sendMessage(BotsApp.chatId, helpMessage, MessageType.text).catch(err => inputSanitization.handleError(err, client, BotsApp));
                 return;
             }
             var helpMessage = HELP.COMMAND_INTERFACE;
-            var command = commandHandler.get(args[0]);
+            var command = CommandsEnabled.get(args[0]);
             if(command){
                 var triggers = " | "
                 prefixes.split("").forEach(prefix => {
                     triggers += prefix + command.name + " | "
                 });
-
-                if(command.demo.isEnabled) {
-                    var buttons = [];
-                    helpMessage += HELP.COMMAND_INTERFACE_TEMPLATE.format(triggers, command.extendedDescription) + HELP.FOOTER;
-                    if(command.demo.text instanceof Array){
-                        for (var i in command.demo.text){
-                            var button = {
-                                buttonId: 'id' + i,
-                                buttonText: {displayText: command.demo.text[i]},
-                                type: 1
-                            }
-                            buttons.push(button);
-                        }
-                    }else{
-                        buttons.push({buttonId: 'id1', buttonText: {displayText: command.demo.text}, type: 1});
-                    }
-                    const buttonMessage = {
-                        contentText: helpMessage,
-                        buttons: buttons,
-                        headerType: 1
-                    }
-                    return await client.sendMessage(BotsApp.chatId, buttonMessage, MessageType.buttonsMessage).catch(err => inputSanitization.handleError(err, client, BotsApp));
-                }
 
                 helpMessage += HELP.COMMAND_INTERFACE_TEMPLATE.format(triggers, command.extendedDescription);
                 client.sendMessage(BotsApp.chatId, helpMessage, MessageType.text).catch(err => inputSanitization.handleError(err, client, BotsApp));

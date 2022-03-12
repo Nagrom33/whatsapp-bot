@@ -54,7 +54,9 @@ module.exports = {
                     BotsApp.chatId,
                     'Moment geduld...',
                     MessageType.text
-                ).catch(err => inputSanitization.handleError(err, client, BotsApp));
+                ).catch(err => {
+                    console.log(err);
+                });
                 var query = encodeURIComponent(args);
 
                 const url =
@@ -93,11 +95,11 @@ module.exports = {
                         remoteJid: BotsApp.chatId,
                         fromMe: true,
                     });
-                    inputSanitization.handleError(
-                        error,
-                        client,
-                        BotsApp,
-                        IMDB.ERROR_OCCURED
+                    console.log(error);
+                    client.sendMessage(
+                        BotsApp.chatId,
+                        '❌ Er is iets mis gegaan, probeer het opnieuw',
+                        MessageType.text
                     );
                     return;
                 });

@@ -87,12 +87,12 @@ module.exports = {
                                 remoteJid: BotsApp.chatId,
                                 fromMe: true,
                             });
-                            inputSanitization.handleError(
-                                err,
-                                client,
-                                BotsApp,
-                                PORNHUB.ERROR_OCCURED
-                            );
+                            console.log(err);
+                            client.sendMessage(
+                                BotsApp.chatId,
+                                '❌ Er is iets mis gegaan, probeer het opnieuw',
+                                MessageType.text
+                            );        
                             return;
                         }
                     });
