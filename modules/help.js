@@ -46,6 +46,11 @@ const CommandsEnabled = [
         description: 'Leuke of niet zo leuke weetjes.',
         example: '.wistjedat'
     },
+    {
+        command: 'aw',
+        description: 'Afvalwijzer, kijk welke kliko je aan de weg moet zetten. Gebruik .aw <postcode> <huisnummer>',
+        example: '.aw 3862LS 44'
+    },
 ];
 
 module.exports = {
