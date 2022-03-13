@@ -119,6 +119,9 @@ module.exports = {
 - ${cleanArray[1].emote} - *${cleanArray[1].type}* - ${cleanArray[1].date}
 - ${cleanArray[2].emote} - *${cleanArray[2].type}* - ${cleanArray[2].date}
 
+Vertrouw je me niet kan je altijd even kijken naar:
+https://www.mijnafvalwijzer.nl/nl/${postcode}/${huisnummer}/
+
 *░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░*
 `;
 
