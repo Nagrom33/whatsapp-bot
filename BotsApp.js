@@ -133,7 +133,7 @@ async function main() {
         const groupMetadata = sender.endsWith("@g.us") ? await client.groupMetadata(sender) : '';
         var BotsApp = wa.resolve(chat, client, groupMetadata);
         // console.log(BotsApp);
-        console.log(chalk.redBright.bold(`[Bericht]`));
+        console.log(`${chalk.redBright.bold(`[MSG]`)} ${BotsApp.sender} - ${BotsApp.body.toString()}`);
         if (BotsApp.isCmd) {
             let isBlacklist = await Blacklist.getBlacklistUser(BotsApp.sender, BotsApp.chatId);
             const cleared = await clearance(BotsApp, client, isBlacklist);
