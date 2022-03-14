@@ -1,6 +1,7 @@
 const { MessageType, Mimetype } = require("@adiwajshing/baileys");
 const inputSanitization = require("../sidekick/input-sanitization");
 const axios = require('axios');
+const striptags = require('striptags');
 
 module.exports = {
     name: "nijkerkerveen",
@@ -50,17 +51,17 @@ module.exports = {
 `*░░░░░░░░░░░░ NIJKERKERVEEN.ORG ░░░░░░░░░░░░*
 
 *${nieuwsItems[0].title.rendered}*
-${nieuwsItems[0].excerpt.rendered}
+${striptags(nieuwsItems[0].excerpt.rendered)}
 
 _Link: ${nieuwsItems[0].link}
 -------
 *${nieuwsItems[1].title.rendered}*
-${nieuwsItems[1].excerpt.rendered}
+${striptags(nieuwsItems[1].excerpt.rendered)}
 
 _Link: ${nieuwsItems[1].link}
 -------
 *${nieuwsItems[2].title.rendered}*
-${nieuwsItems[2].excerpt.rendered}
+${striptags(nieuwsItems[2].excerpt.rendered)}
 
 _Link: ${nieuwsItems[2].link}
 -------
