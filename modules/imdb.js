@@ -1,5 +1,6 @@
 const { MessageType, Mimetype } = require("@adiwajshing/baileys");
 const inputSanitization = require("../sidekick/input-sanitization");
+const yts = require("yt-search");
 const axios = require('axios');
 const https = require("https");
 const config = require("../config");
@@ -25,13 +26,16 @@ module.exports = {
                     {
                         mimetype: Mimetype.jpg,
                         caption: `
-*Title:* ${caption.title}
-*runtimeStr:* ${caption.runtimeStr}
-*genres:* ${caption.genres}
-*imDbRating:* ${caption.imDbRating}
-*imDbRatingVotes:* ${caption.imDbRatingVotes}
-*plot:* ${caption.plot}
-*stars:* ${caption.plot}
+*Titel:* ${caption.title}
+*Description:* ${caption.description}
+*Duur:* ${caption.runtimeStr}
+*Genres:* ${caption.genres}
+*imDb Rating:* ${caption.imDbRating}
+*imDb Rating Votes:* ${caption.imDbRatingVotes}
+*Samenvatting:* ${caption.plot}
+*Spelers:* ${caption.stars}
+
+*Trailer:* ${caption.trailer}
                         `,
                         thumbnail: null,
                     }
@@ -50,6 +54,7 @@ module.exports = {
                 ).catch(err => inputSanitization.handleError(err, client, BotsApp));
                 return;
             } else {
+                let trailer = '';
                 var downloading = await client.sendMessage(
                     BotsApp.chatId,
                     'Moment geduld...',
@@ -57,12 +62,12 @@ module.exports = {
                 ).catch(err => {
                     console.log(err);
                 });
-                var query = encodeURIComponent(args);
+                var query = encodeURIComponent(args.join(" "));
+                // console.log(query);
 
                 const url =
                     "https://imdb-api.com/API/AdvancedSearch/k_dl09nvvw?title=" +
-                    query + 
-                    "&languages=nl";
+                    query;
 
                 var config = {
                     method: 'get',
@@ -72,19 +77,23 @@ module.exports = {
                     }
                 };
                 
+                trailer = await yts( { query: query+' trailer' } )
+                
                 axios(config)
                 .then(function (response) {
                     const itemsData = JSON.parse(JSON.stringify(response.data));
                     const bestResult = itemsData.results[0];
-
+                    
                     const caption = {
                         title: bestResult.title,
+                        description: bestResult.description,
                         runtimeStr: bestResult.runtimeStr,
                         genres: bestResult.genres,
                         imDbRating: bestResult.imDbRating,
                         imDbRatingVotes: bestResult.imDbRatingVotes,
                         plot: bestResult.plot,
-                        stars: bestResult.stars
+                        stars: bestResult.stars,
+                        trailer: trailer.videos[0].url
                     };
 
                     result(bestResult.image, caption, downloading);
