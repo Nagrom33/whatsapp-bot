@@ -5,10 +5,10 @@ const STRINGS = require("../lib/db");
 const songlyrics = require("songlyrics").default;
 
 module.exports = {
-    name: "lyrics",
+    name: "songtext",
     description: STRINGS.lyrics.DESCRIPTION,
     extendedDescription: STRINGS.lyrics.EXTENDED_DESCRIPTION,
-    demo: { isEnabled: true, text: ".lyrics Stairway to heaven" },
+    demo: { isEnabled: true, text: ".songtext Stairway to heaven" },
     async handle(client, chat, BotsApp, args) {
         const processing = await client.sendMessage(
             BotsApp.chatId,

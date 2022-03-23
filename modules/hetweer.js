@@ -21,16 +21,16 @@ module.exports = {
     async handle(client, chat, BotsApp, args) {
         try {
             const weatherTypes = {
-                sunny: "zonnig",
-                clear: "helder",
-                cloud: "wolk",
-                overcast: "bewolkt",
-                rain: "regen",
-                drizzle: "motregen",
-                snow: "sneeuw",
+                sunny: "sunny",
+                clear: "clear",
+                cloud: "cloud",
+                overcast: "overcast",
+                rain: "rain",
+                drizzle: "drizzle",
+                snow: "snow",
                 storm: "storm",
-                fog: "misy",
-                haze: "nevel",
+                fog: "storm",
+                haze: "haze",
                 mist: "mist",
             };
             async function result(imageUrl, weatherDataVariables, downloading) {
