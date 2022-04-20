@@ -14,10 +14,20 @@ module.exports = {
     async handle(client, chat, BotsApp, args) {
         try {
             // const resultLimit = 3;
-            async function result(content, downloading) {
+            async function result(content, search, downloading) {
                 await client.sendMessage(
                     BotsApp.chatId,
-`DEF ${content.stringify}`,
+                    `*░░░░░░░░░░░░ KRUIDVAT ░░░░░░░░░░░░*
+
+                    - ${content[0].title} - *${content[0].price}* - ${content[0].link}
+                    - ${content[0].title} - *${content[0].price}* - ${content[0].link}
+                    - ${content[0].title} - *${content[0].price}* - ${content[0].link}
+                    
+                    Vertrouw je me niet kan je altijd even kijken naar:
+                    https://www.kruidvat.nl/search?q=${search}
+                    
+                    *░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░*
+                    `,
                     MessageType.text
                 ).catch(err => inputSanitization.handleError(err, client, BotsApp));
                 await client.deleteMessage(BotsApp.chatId, {
@@ -57,7 +67,7 @@ module.exports = {
                         })
                     });
                     //console.log(products);
-                    result(products, downloading);
+                    result(products, zoekProduct, downloading);
                 })
                 
                 async function fetchData(url){
