@@ -27,11 +27,6 @@ const CommandsEnabled = [
         example: '.kenteken 80-sr-rl'
     },
     {
-        command: 'pornhub',
-        description: 'Wanneer je het nodig hebt een random filmpje van een bepaalde genre.',
-        example: '.pornhub ass'
-    },
-    {
         command: 'teammaker',
         description: 'Random groepen indelen, .teammaker <deelnemer 1> <deelnemer 2> | <aantal teams>',
         example: '.teammaker Jan Jaap Joost Geurt | 2'
@@ -51,6 +46,27 @@ const CommandsEnabled = [
         description: 'Afvalwijzer, kijk welke kliko je aan de weg moet zetten. Gebruik .aw <postcode> <huisnummer>',
         example: '.aw 3862LS 44'
     },
+    {
+        command: 'nijkerkerveen',
+        description: 'De laatste 3 nieuws items van Nijkerkerveen.org',
+        example: '.nijkerkerveen'
+    },
+    {
+        command: 'song',
+        description: 'Wil je een liedje als MP3 terug ontvangen, dat kan makkelijker dan ooit!',
+        example: '.song Ricky Astley - Never Gonna Give You up'
+    },
+    {
+        command: 'songtext',
+        description: 'Lekker mee zingen maar weet je de songtext niet?',
+        example: '.songtext Ricky Astley - Never Gonna Give You up'
+    },
+    {
+        command: 'pornhub',
+        description: 'Wanneer je het nodig hebt een random filmpje van een bepaalde genre.',
+        example: '.pornhub ass'
+    },
+
 ];
 
 module.exports = {
