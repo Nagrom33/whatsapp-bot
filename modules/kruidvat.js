@@ -17,12 +17,7 @@ module.exports = {
             async function result(content, downloading) {
                 await client.sendMessage(
                     BotsApp.chatId,
-                    content.map((product, i) => {
-`Name: ${product.title}
-Prijs: ${product.price}
-Link: ${product.link}
----------------------`
-                    }),
+`DEF ${content.stringify}`,
                     MessageType.text
                 ).catch(err => inputSanitization.handleError(err, client, BotsApp));
                 await client.deleteMessage(BotsApp.chatId, {
