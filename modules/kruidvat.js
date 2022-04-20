@@ -17,18 +17,26 @@ module.exports = {
             async function result(content, search, downloading) {
                 await client.sendMessage(
                     BotsApp.chatId,
-                    `*░░░░░░░░░░░░ KRUIDVAT ░░░░░░░░░░░░*
-
-                    - ${content[0].title} - *${content[0].price}* - ${content[0].link}
-                    - ${content[0].title} - *${content[0].price}* - ${content[0].link}
-                    - ${content[0].title} - *${content[0].price}* - ${content[0].link}
+        `*░░░░░░░░░░░░ KRUIDVAT ░░░░░░░░░░░░*
+        *${content[0].title}*
+        ${content[0].price}
+        ${content[0].link}
+        ---
+        *${content[1].title}*
+        ${content[1].price}
+        ${content[1].link}
+        ---
+        *${content[2].title}*
+        ${content[2].price}
+        ${content[2].link}
+        ---
                     
-                    Vertrouw je me niet kan je altijd even kijken naar:
-                    https://www.kruidvat.nl/search?q=${search}
-                    
-                    *░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░*
-                    `,
-                    MessageType.text
+        Vertrouw je me niet kan je altijd even kijken naar:
+        https://www.kruidvat.nl/search?q=${search}
+        
+        *░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░*
+        `,
+                MessageType.text
                 ).catch(err => inputSanitization.handleError(err, client, BotsApp));
                 await client.deleteMessage(BotsApp.chatId, {
                     id: downloading.key.id,
